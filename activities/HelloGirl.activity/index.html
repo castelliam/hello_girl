@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/activity.css">
 <script data-main="js/loader" src="lib/require.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
@@ -41,13 +42,15 @@
     <h2>Click on clothing items to dress your doll!</h2>
     <div class="clothing_slider">
       <p class="slider_text">Doll/Clothing Options</p>
-      <img src="images/figure1.png"/>
-      <img src="images/figure2.png" />
-      <img src="images/figure3.png" />
+      <img src="images/figure1.png" onclick='changeImage("images/figure1.png");'/>
+      <img src="images/figure2.png" onclick='changeImage("images/figure2.png");'/>
+      <img src="images/figure3.png" onclick='changeImage("images/figure3.png");'/>
       <img src="images/shirt1.png" />
       <img src="images/pant1.png" />
       <img src="images/pant2.png" />
       <img src="images/pant3.png" />
+      <img src="#" />
+      <img src="#" />
       <img src="#" />
       <img src="#" />
     </div>
@@ -69,13 +72,15 @@
   <!-- Start of Doll Container -->
   <div class="doll_container">
     <h2>Your Doll</h2>
-    <img src="images/figure1.png" />
+    <img src="images/figure1.png" id="doll_image"/>
   </div>
   <!-- End of Doll Container -->
 
   <!-- Start of Code Container -->
   <div class="code_container">
     <h2>The code side...</h2>
+    <p>Piece of code here.</p>
+    <p>Piece of code here.</p>
   </div>
   <!-- End of Code Container -->
 
