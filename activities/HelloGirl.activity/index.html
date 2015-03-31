@@ -13,6 +13,26 @@
 <script data-main="js/loader" src="lib/require.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 <script type="text/javascript" src="js/main.js"></script>
+
+<!-- ADDED DRAGGABLE UI START -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#draggable" ).draggable();
+    $( "#droppable" ).droppable({
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "h2" )
+            //.html( "Dropped!" );
+      }
+    });
+  });
+  </script>
+<!-- ADDED DRAGGABLE UI END -->
+
 </head>
 
 <body>
@@ -45,10 +65,10 @@
       <img src="images/figure1.png" onclick='changeImage("images/figure1.png");'/>
       <img src="images/figure2.png" onclick='changeImage("images/figure2.png");'/>
       <img src="images/figure3.png" onclick='changeImage("images/figure3.png");'/>
-      <img src="images/shirt1.png" />
-      <img src="images/pant1.png" />
-      <img src="images/pant2.png" />
-      <img src="images/pant3.png" />
+      <img src="images/shirt1.png" id="draggable" />
+      <img src="images/pant1.png" id="draggable" />
+      <img src="images/pant2.png" id="draggable" />
+      <img src="images/pant3.png" id="draggable" />
       <img src="#" />
       <img src="#" />
       <img src="#" />
@@ -70,7 +90,7 @@
   <!-- End of Clothing Container -->
 
   <!-- Start of Doll Container -->
-  <div class="doll_container">
+  <div id="droppable" class="doll_container">
     <h2>Your Doll</h2>
     <img src="images/figure1.png" id="doll_image"/>
   </div>
