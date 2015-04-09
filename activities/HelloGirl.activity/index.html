@@ -2,36 +2,63 @@
 <html>
 
 <head>
-<meta charset="utf-8" />
-<title>Hello, Girl</title>
-<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
-<link rel="stylesheet" media="not screen and (device-width: 1200px) and (device-height: 900px)"
-	href="lib/sugar-web/graphics/css/sugar-96dpi.css">
-<link rel="stylesheet" media="screen and (device-width: 1200px) and (device-height: 900px)"
-	href="lib/sugar-web/graphics/css/sugar-200dpi.css">
-<link rel="stylesheet" href="css/activity.css">
-<script data-main="js/loader" src="lib/require.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="js/main.js"></script>
+    <meta charset="utf-8" />
+    <title>Hello, Girl</title>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
 
-<!-- ADDED DRAGGABLE UI START -->
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<script>
-  $(function() {
-    $( "#draggable" ).draggable();
-    $( "#droppable" ).droppable({
-      drop: function( event, ui ) {
-        $( this )
-          .addClass( "ui-state-highlight" )
-          .find( "h2" )
-            //.html( "Dropped!" );
-      }
-    });
-  });
-  </script>
-<!-- ADDED DRAGGABLE UI END -->
+     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <script>
+      $(function() {
+        $(".draggable").each (function() {
+          $(this).draggable({
+          helper: function(){
+                $copy = $(this).clone();
+                $copy.width(170);
+                $copy.height(150);
+                return $copy;
+          },
+          appendTo: "body",
+        });
+        });
+
+        $( ".droppable" ).droppable({
+          over: function(event, ui) {
+             $(ui.draggable).css({width:'170px',height:'150px'});
+          },
+
+          drop: function( event, ui ) {
+              if($(ui.draggable).parent() !==$(this)){
+                  $(ui.draggable).appendTo($( this ));
+                  //$(ui.draggable).tooltip({ disabled: true });
+                  $(ui.draggable).width(170);
+                  $(ui.draggable).height(150);
+                  $(ui.draggable).css('box-shadow','none');
+                  $(ui.draggable).css('margin-top','none');
+                  $(ui.draggable).css('border-radius','none');
+                  $(ui.draggable).css('background-color','none');
+                  //$(ui.draggable).css('z-index','9999');
+                  //$(ui.draggable).css('position','absolute');
+                 // $(ui.draggable).draggable('option','grid',false);
+                  //$(ui.draggable).css({float:'left'});
+                }
+          }
+        });
+
+      });
+    </script>
+
+    <link rel="stylesheet" media="not screen and (device-width: 1200px) and (device-height: 900px)"
+      href="lib/sugar-web/graphics/css/sugar-96dpi.css">
+    <link rel="stylesheet" media="screen and (device-width: 1200px) and (device-height: 900px)"
+      href="lib/sugar-web/graphics/css/sugar-200dpi.css">
+    <link rel="stylesheet" href="css/activity.css">
+    <script data-main="js/loader" src="lib/require.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="js/main.js"></script>
+
+   
 
 </head>
 
@@ -49,7 +76,9 @@
 <div id="canvas">
 
   <!-- Replace this message with your own content -->
-  <h1 class="header_text">Hello, Girl!</h1>
+  <h1 class="header_text">
+    <img src="images/HelloGirlLogo.png" />
+    Hello, Girl!</h1>
 
   <!-- Start of Instructions Container -->
   <div class="instructions_container">
@@ -62,22 +91,23 @@
     <h2>Click on clothing items to dress your doll!</h2>
     <div class="clothing_slider">
       <p class="slider_text">Doll/Clothing Options</p>
+      <img src="images/greenshirt.png" class="draggable droppable" />
       <img src="images/figure1.png" onclick='changeImage("images/figure1.png");'/>
       <img src="images/figure2.png" onclick='changeImage("images/figure2.png");'/>
-      <img src="images/figure3.png" onclick='changeImage("images/figure3.png");'/>
-      <img src="images/shirt1.png" id="draggable" />
-      <img src="images/pant1.png" id="draggable" />
-      <img src="images/pant2.png" id="draggable" />
-      <img src="images/pant3.png" id="draggable" />
-      <img src="#" />
+      <img src="images/figure3.png" onclick='changeImage("images/figure3.png");' />
+      <!-- <img src="images/greenshirt.png" class="draggable droppable ui-widget-content" /> -->
+      <img src="images/pant1.png" class="draggable droppable"/>
+      <img src="images/bluePants.png" class="draggable droppable"/>
+      <img src="images/pant3.png" class="draggable droppable"/>
+      <img src="images/tutu.png" class="draggable droppable"/>
       <img src="#" />
       <img src="#" />
       <img src="#" />
     </div>
     <div class="feature_slider">
       <p class="slider_text">Feature Options</p>
-      <img src="#" />
-      <img src="#" />
+      <img src="images/blondeHair.png" />
+      <img src="images/brunetteHair.png" />
       <img src="#" />
       <img src="#" />
       <img src="#" />
@@ -90,7 +120,7 @@
   <!-- End of Clothing Container -->
 
   <!-- Start of Doll Container -->
-  <div id="droppable" class="doll_container">
+  <div class="doll_container droppable">
     <h2>Your Doll</h2>
     <img src="images/figure1.png" id="doll_image"/>
   </div>
