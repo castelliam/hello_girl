@@ -66,8 +66,8 @@
 
 .clothing_container img {
 	display: block;
-	width: 100%;
-	height: 150px;
+    width: 100%;
+    height: 150px;
 	margin-top: 10px;
 	border-radius: 30px;
 	background-color: white;
@@ -85,24 +85,30 @@
 	/*border: 2px solid purple;*/
 }
 
+/*.expand {
+	background-size: 100% 100%;
+}*/
+
 .doll_container {
 	display: inline-block;
 	width: 30%;
 	height: 100%;
-	border: 2px solid red;
 	margin-left: 34px;
 	font-family: Lobster;
 }
 
-.doll_container img {
+#doll_image {
+	position: relative;
 	width: 100%;
 	height: 414px;
 	border-radius: 50px;
 	box-shadow: 5px 1px 5px #888888;
 }
 
-#doll_image {
-	position: relative;
+.trash {
+	float: right;
+	width: 75px;
+	height: 100px;
 }
 
 .code_container {
@@ -110,5 +116,11 @@
 	width: 30%;
 	height: 100%;
 	font-family: Lobster;
+	overflow: auto;
 	/*border: 2px solid blue;*/
+}
+
+.code_container ul li {
+	list-style: none;
+	font-size: 19px;
 }
