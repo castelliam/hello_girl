@@ -9,51 +9,17 @@
      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-    <script>
-      $(function() {
-        $(".draggable").each(function() {
-          $(this).draggable({
-            helper: function(){
-                  $copy = $(this).clone();
-                  $copy.width(370);
-                  $copy.height(350);
-                  return $copy;
-            },
-            appendTo: "body",
-          });
-        });
-
-        $(".droppable").each(function(){
-          $( ".droppable" ).droppable({
-            over: function(event, ui) {
-               $(ui.draggable).css({width:'170px',height:'150px'});
-            },
-            drop: function( event, ui ) {
-              $(this).append($(ui.draggable).clone);
-            }
-          });
-        });
-        
-        $(".trash").on('drop',$copy.remove());
-        /*$(".trash").each(function() {
-          $(this).droppable({
-            drop: function( event, ui ) {
-              $copy.remove();
-            }
-          });
-        });*/
-
-      });
-    </script>
-
+    
     <link rel="stylesheet" media="not screen and (device-width: 1200px) and (device-height: 900px)"
       href="lib/sugar-web/graphics/css/sugar-96dpi.css">
     <link rel="stylesheet" media="screen and (device-width: 1200px) and (device-height: 900px)"
       href="lib/sugar-web/graphics/css/sugar-200dpi.css">
-    <link rel="stylesheet" href="css/activity.css">
     <script data-main="js/loader" src="lib/require.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="js/main.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/activity.css"> <!-- Link to CSS -->
+    <script type="text/javascript" src="js/main.js"></script> <!-- Link to JS -->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'> <!-- Link to Lobster font -->
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'> <!-- Link to Playfair Display font -->
 
    
 
@@ -72,130 +38,243 @@
 <!-- The content of your activity goes inside the canvas -->
 <div id="canvas">
 
-  <!-- Replace this message with your own content -->
-  <h1 class="header_text">
-    <img src="images/HelloGirlLogo.png" />
-    Hello, Girl!</h1>
-
-  <!-- Start of Instructions Container -->
-  <div class="instructions_container">
-    <p>Instructions: Below, choose your doll and you can dress them up in shirts and pants. Then, you can add lips or hair! After your changes are made, the code will display to the right of your doll to show you how your changes will look in python code!</p>
-  </div>
-  <!-- End of Instructions Container -->
-
-  <!-- Start of Clothing Container -->
-  <div class="clothing_container">
-    <h2>Click on clothing items to dress your doll!</h2>
-    <div class="clothing_slider">
-      <p class="slider_text">Doll/Clothing Options</p>
-      <img src="images/darkDoll.png" onclick='changeImage("images/darkDoll.png"); changeWord("Black","word_skin");'/>
-      <img src="images/mediumDarkDoll.png" onclick='changeImage("images/mediumDarkDoll.png"); changeWord("Tan","word_skin");'/>
-      <img src="images/mediumLightDoll.png" onclick='changeImage("images/mediumLightDoll.png"); changeWord("White","word_skin");'/>
-
-      <img src="images/greenshirt.png" class="draggable droppable" onclick='changeWord("Green Shirt","word_shirt");'/>
-      <img src="images/bluePants.png" class="draggable droppable" onclick='changeWord("Blue Jeans","word_bottoms");'/>
-      <img src="images/khakiPants.png" class="draggable droppable" onclick='changeWord("Khakis","word_bottoms");'/>
-      <img src="images/pant3.png" class="draggable droppable" onclick='changeWord("Black Pants","word_bottoms");'/>
-      <img src="images/jeans.png" class="draggable droppable" onclick='changeWord("Jeans","word_bottoms");'/>
-      <img src="images/tutu.png" class="draggable droppable" onclick='changeWord("Tutu","word_bottoms");'/>
-      <img src="images/greenSkirt.png" class="draggable droppable" onclick='changeWord("Green Skirt","word_bottoms");'/>
-      <img src="images/redSkirt.png" class="draggable droppable" onclick='changeWord("Red Skirt","word_bottoms");'/>
-      <img src="images/darkBlueShirt.png" class="draggable droppable" onclick='changeWord("Dark Blue","word_shirt");'/>
-      <img src="images/lightBlueShirt.png" class="draggable droppable" onclick='changeWord("Light Blue","word_shirt");'/>
-      <img src="images/pinkShirt.png" class="draggable droppable" onclick='changeWord("Pink","word_shirt");'/>
+  <header>
+    <div class="container">
+      <img class="logo" src="images/HelloGirlLogo.png">
+      <p class="title">Hello, Girl!</p>
     </div>
-    <div class="feature_slider">
-      <p class="slider_text">Feature Options</p>
-      <img src="images/blondeHair.png" class="draggable droppable" onclick='changeWord("Blonde","word_hair");'/>
-      <img src="images/brunetteHair.png" class="draggable droppable" onclick='changeWord("Brunette","word_hair");'/>
-      <img src="images/RedAfro.png" class="draggable droppable" onclick='changeWord("Red","word_hair");'/>
-      <img src="images/blueEyes.png" class="draggable droppable expand" onclick='changeWord("Blue","word_eyes");'/>
-      <img src="images/brownEyes.png" class="draggable droppable" onclick='changeWord("Brown","word_eyes");'/>
-      <img src="images/greenEyes.png" class="draggable droppable" onclick='changeWord("Green","word_eyes");'/>
-      <img src="images/nose.png" class="draggable droppable" onclick='changeWord("Nose","word_eyes");'/> <!--CHANGE ID-->
-      <img src="images/nudeLips.png" class="draggable droppable" onclick='changeWord("Nude","word_lips");'/>
-      <img src="images/pinkLips.png" class="draggable droppable" onclick='changeWord("Pink","word_lips");'/>
-      <img src="images/redLips.png" class="draggable droppable" onclick='changeWord("Red","word_lips");'/>
-    </div>
-  </div>
-  <!-- End of Clothing Container -->
 
-  <!-- Start of Doll Container -->
-  <div class="doll_container">
-    <h2>Your Doll</h2>
-    <img src="images/mediumLightDoll.png" id="doll_image" class="droppable"/>
-    <img src="images/trashcan.png" class="trash"/>
-  </div>
-  <!-- End of Doll Container -->
+    <!-- Start of Instructions Container -->
+     <div class="instructions_container">
+       <p>Instructions: Below, choose your doll and you can dress them up in shirts and pants. Then, you can add lips or hair! After your changes are made, the code will display to the right of your doll to show you how your changes will look in python code!</p>
+     </div>
+     <!-- End of Instructions Container -->
+  </header>
 
-  <!-- Start of Code Container -->
-  <div class="code_container">
-    <h2>The code side...</h2>
-    <ul>
-      <li>class Doll:</li>
-<ul>
+  <!-- Start of Main Container including divs for clothing and to dress doll -->
+  <div class="main_container">
 
-      <li>def __init__(self,name):</li>
+    <!-- Start of Item Container -->
+    <div class="col_3 item_div">
+      <div class="col_2 clothing_div center_text">
+        <p>Your Clothing Options</p>
+
+        <div class="option-container item">
+              <img src="images/darkDoll.png" onclick='changeImage("images/darkDoll.png"); changeWord("Black","word_skin");'/>
+            </div>
+            <div class="option-container item">
+              <img src="images/mediumDarkDoll.png" onclick='changeImage("images/mediumDarkDoll.png"); changeWord("Tan","word_skin");'/>
+            </div>
+            <div class="option-container item">
+              <img src="images/mediumLightDoll.png" onclick='changeImage("images/mediumLightDoll.png"); changeWord("White","word_skin");'/>
+            </div>
+
+        <div class="draggable">
+              <div class="draggable item"><img src="images/greenshirt.png" onclick='changeWord("Green Shirt","word_shirt");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/darkBlueShirt.png" onclick='changeWord("Dark Blue Shirt","word_shirt");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/lightBlueShirt.png" onclick='changeWord("Light Blue Shirt","word_shirt");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/pinkShirt.png" onclick='changeWord("Pink Shirt","word_shirt");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/blackPants.png" onclick='changeWord("Black Pants","word_bottoms");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/bluePants.png" onclick='changeWord("Blue Pants","word_bottoms");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/khakiPants.png" onclick='changeWord("Khaki Pants","word_bottoms");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/jeans.png" onclick='changeWord("Jeans","word_bottoms");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/redSkirt.png" onclick='changeWord("Red Skirt","word_bottoms");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/greenSkirt.png" onclick='changeWord("Green Skirt","word_bottoms");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/tutu.png" onclick='changeWord("Tutu","word_bottoms");'/></div>
+            </div>
+      </div>
+
+      <div class="col_2 feature_div center_text">
+        <p>Your Feature Options</p>
+        <div class="draggable">
+              <div class="draggable item"><img src="images/blondeHair.png" onclick='changeWord("Blone Hair","word_hair");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/RedAfro.png" onclick='changeWord("Red Afro","word_hair");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/brunetteHair.png" onclick='changeWord("Brunette","word_hair");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/blueEyes.png" onclick='changeWord("Blue Eyes","word_eyes");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/brownEyes.png" onclick='changeWord("Brown Eyes","word_eyes");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/greenEyes.png" onclick='changeWord("Green Eyes","word_eyes");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/nose.png"/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/nudeLips.png" onclick='changeWord("Nude Lips","word_lips");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/pinkLips.png" onclick='changeWord("Pink Lips","word_lips");'/></div>
+            </div>
+            <div class="draggable">
+              <div class="draggable item"><img src="images/redLips.png" onclick='changeWord("Red Lips","word_lips");'/></div>
+            </div>
+      </div>
+      
+    </div> <!-- / item_div -->
+    <!-- End of Item Container -->
+
+
+
+    <!-- Start of Doll Container -->
+    <div id="drop-area" class="col_3 doll_div center_text">
+      <p>Your Doll</p>
+      <p>Drag your items onto your doll here!</p>
+      <div class="doll_image">
+        <!-- id is used to capture the id of the image and change in main.js -->
+        <img id="body_image" src="images/mediumLightDoll.png" />
+      </div>
+      
+    </div> <!-- / doll_div -->
+    <!-- End of Doll Container -->
+
+    <!-- Start of Code Container -->
+    <div class="col_3 code_div">
+
+        <p>The code side...</p>
         <ul>
-          <li>self.name = name</li>
-          <li>self.skinColor = null</li>
-          <li>self.shirt = null</li>
-          <li>self.pants = null</li>
-          <li>self.eyeColor = null</li>
-          <li>self.lipstick = null</li>
-          <li>self.haircolor = null</li>
-          <li>self.hobbies = []</li>
-      </ul>
 
-      <li>def setSkin(self,skinColor):</li>
-        <ul>
-          <li>self.skinColor = skinColor</li>
+          <li>class Doll:
+            <ul>
+              <li>def __init__(self,name):
+                <ul>
+                  <li>self.name = name</li>
+                  <li>self.skinColor = <span id="">null</span></li>
+                  <li>self.shirt = <span id="">null</span></li>
+                  <li>self.pants = <span id="">null</span></li>
+                  <li>self.eyeColor = <span id="">null</span></li>
+                  <li>self.lipstick = <span id="">null</span></li>
+                  <li>self.haircolor = <span id="">null</span></li>
+                  <li>self.hobbies = []</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>def setSkin(self,skinColor):
+            <ul>
+              <li>self.skinColor = skinColor</li>
+            </ul>
+          </li>
+
+          <li>def setShirt(self,shirtColor):
+            <ul>
+              <li>self.shirtColor = shirtColor</li>
+            </ul>
+          </li>
+
+          <li>def setPants(self,pantsColor):
+            <ul>
+              <li>self.pantsColor = pantsColor</li>
+            </ul>
+          </li>
+
+          <li>def setEyeColor(self,eyeColor):
+            <ul>
+              <li>self.eyeColor = eyeColor</li>
+            </ul>
+          </li>
+
+          <li>def setLipstick(self,lipstickColor):
+            <ul>
+              <li>self.lipstick = lipstickColor</li>
+            </ul>
+          </li>
+
+          <li>def setHairColor(self,hairColor):
+            <ul>
+              <li>self.hairColor = hairColor</li>
+            </ul>
+          </li>
+
+          <li>def addHobby(self, hobby):
+            <ul>
+              <li>self.hobbies.append(hobby)</li>
+            </ul>
+          </li>
+
         </ul>
 
-      <li>def setShirt(self,shirtColor):</li>
-        <ul>
-          <li>self.shirtColor = shirtColor</li>
-        </ul>
 
-      <li>def setPants(self,pantsColor):</li>
         <ul>
-          <li>self.pantsColor = pantsColor</li>
+          <li>girl = Doll("<input type="text" name="firstname">")</li>
+          <li>girl.setSkin("<span id="word_skin">__________</span>")</li>
+          <li>girl.setShirt("<span id="word_shirt">__________</span>")</li>
+          <li>girl.setBottoms("<span id="word_bottoms">__________</span>")</li>
+          <li>girl.setEyeColor("<span id="word_eyes">__________</span>")</li>
+          <li>girl.setLipstick("<span id="word_lips">__________</span>")</li>
+          <li>girl.setHairColor("<span id="word_hair">__________</span>")</li>
+          <li>girl.addHobby("<input type="text" name="firstname">")</li> 
         </ul>
+      
+    </div> <!-- / code_div -->
+    <!-- End of Code Container -->
 
-      <li>def setEyeColor(self,eyeColor):</li>
-        <ul>
-          <li>self.eyeColor = eyeColor</li>
-        </ul>
+  </div> <!-- / main_container -->
+  <!-- End of Main Container -->
 
-      <li>def setLipstick(self,lipstickColor):</li>
-        <ul>
-          <li>self.lipstick = lipstickColor</li>
-        </ul>
 
-      <li>def setHairColor(self,hairColor):</li>
-        <ul>
-          <li>self.hairColor = hairColor</li>
-        </ul>
-
-      <li>def addHobby(self, hobby):</li>
-        <ul>
-          <li>self.hobbies.append(hobby)</li>
-        </ul>
-    </ul>
-    <ul>
-      <li>girl = Doll("<input type="text" name="firstname">")</li>
-      <li>girl.setSkin("<span id="word_skin">__________</span>")</li>
-      <li>girl.setShirt("<span id="word_shirt">__________</span>")</li>
-      <li>girl.setBottoms("<span id="word_bottoms">__________</span>")</li>
-      <li>girl.setEyeColor("<span id="word_eyes">__________</span>")</li>
-      <li>girl.setLipstick("<span id="word_lips">__________</span>")</li>
-      <li>girl.setHairColor("<span id="word_hair">__________</span>")</li>
-      <li>girl.addHobby("<span id="word_hobby">__________</span>")</li> <!--ADD HOBBIES-->
-    </ul>
-  </div>
-  <!-- End of Code Container -->
 
 </div>
+
+<script>
+    jQuery(document).ready(function($) {
+  
+      $('.draggable').draggable({
+        helper: 'clone',
+        cursor: 'move'
+      });
+      
+      $('#drop-area').droppable({
+        drop: function (event, ui) {
+            var $canvas = $(this);
+            if (!ui.draggable.hasClass('canvas-element')) {
+                var $canvasElement = ui.draggable.clone();
+                $canvasElement.addClass('canvas-element');
+                $canvasElement.draggable({
+                    containment: '.doll_div'
+                });
+                $canvas.append($canvasElement);
+                $canvasElement.css({
+                    left: (ui.position.left),
+                    top: (ui.position.top),
+                    position: 'absolute'
+                });
+            }
+        }
+      });
+      
+      
+    });
+  </script>
+
 </body>
 
 </html>

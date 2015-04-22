@@ -1,7 +1,7 @@
 function changeImage(a) {
-    document.getElementById("doll_image").src=a;
+    document.getElementById("body_image").src=a;
 }
 
-function changeWord(idElement, id){
+function changeWord(idElement, id, id2){
     document.getElementById(id).innerHTML=idElement;
 }
